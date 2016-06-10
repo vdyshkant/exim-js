@@ -1,0 +1,54 @@
+@-moz-document domain("www.youtube.com") {
+#watch-header .yt-user-info a.it-works {
+  display: block;
+}
+
+/* стиль, который применяем, чтобы увидеть, что скрипт вообще отрабатывает */
+#watch-header .yt-user-info a.it-works::after {
+	content: "[Neutral channel]";
+  color: tan;
+}
+
+/* Каналы с отрицательным и/или бесполезным содержимым (проверенные); Однако это не отрицает наличие полезного контента в них или то, что он был там не найден. */
+#watch-header .yt-user-info a.blacklisted::after {
+  content: "[Blacklisted channel!!]";
+  color: red;
+}
+
+/* Каналы с определённо полезным содержимым (проверенные) */
+#watch-header .yt-user-info a.useful::after {
+  content: "[Useful channel!!]";
+  color: limegreen;
+}
+
+/* если поменялась ссылка на канал */
+#watch-header .yt-user-info a.url-changed::before {
+  content: "<url-changed";
+}
+
+/* если поменялось имя канала */
+#watch-header .yt-user-info a.name-changed::before {
+  content: "<name-changed";
+}
+
+#watch-header .yt-user-info a.blacklisted::after,
+#watch-header .yt-user-info a.useful::after,
+#watch-header .yt-user-info a.it-works::after,
+#watch-header .yt-user-info a.name-changed::before,
+#watch-header .yt-user-info a.url-changed::before {
+  position: absolute;
+  right: 50%;
+  top: 0;
+  transform: translateX(50%);
+  font-size: 30px;
+  line-height: 30px;
+}
+
+#watch-header .yt-user-info a.url-changed::before,
+#watch-header .yt-user-info a.name-changed::before {
+  color: crimson;
+  background-color: black;
+  right: 0;
+  transform: translateX(0%);
+}
+
